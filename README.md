@@ -2,7 +2,7 @@
 
 ### 安装opencv
 
-*系统环境为ubuntu18.04*
+**系统环境为ubuntu18.04**
 
 1.下载
 
@@ -10,8 +10,8 @@
 然后选择 源码安装 sources
 
 2.安装
-```
-#解压zip
+``` shell script
+# 解压zip
 unzip opencv-3.4.8.zip
 cd opencv-3.4.8.zip
 # 安装工具和依赖
@@ -28,7 +28,7 @@ sudo make install
 3.编译环境
 
 - 将opencv的库添加到系统路径
-```
+```shel script
 sudo vim /etc/ld.so.conf.d/opencv.conf
 # 在文件中添加
 /usr/local/lib  
@@ -36,7 +36,7 @@ sudo ldconfig  #使路径生效
 ```
 
 - 配置bash
-```
+```shell srcipt
 sudo vim /etc/bash.bashrc 
 # 在末尾加入
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig  
@@ -49,7 +49,7 @@ sudo updatedb
 
 4.测试
 
-```
+```shell script
 进入目录
 /opencv-3.4.8/samples/cpp/example_cmake
 cmake .
@@ -60,7 +60,7 @@ make
 
 
 ### 将.cpp文件生成.so动态链接库
-```
+```cpp
 创建项目目录
 mkdir get3dfixed
 创建CMakeLists.txt
