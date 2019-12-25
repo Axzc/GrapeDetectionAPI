@@ -1,7 +1,7 @@
-#5G采摘机器人
+# GrapeDetectionAPI
 
+### 安装opencv
 
-###安装opencv
 *系统环境为ubuntu18.04*
 
 1.下载
@@ -91,7 +91,7 @@ add_library(get3dfixeds1 SHARED get3DFixed.cpp)
 # 为get3dfixeds1 添加openv的动态链接库
 target_link_libraries(get3dfixeds1 ${OpenCV_LIBS})
 ```
-安装依赖
+#### 安装依赖
 ```
 pip install -r requirements.txt
 ```
