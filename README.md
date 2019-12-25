@@ -12,16 +12,12 @@
 2.安装
 ``` shell script
 # 解压zip
-unzip opencv-3.4.8.zip
-cd opencv-3.4.8.zip
+unzip opencv-3.4.8.zip; cd opencv-3.4.8
 # 安装工具和依赖
 sudo apt-get install cmake  
 sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg.dev libtiff4.dev libswscale-dev libjasper-dev
 # cmake && make
-mkdir build 
-cd build
-cmake ..
-sudo make
+mkdir build; cd build; cmake ..; sudo make
 sudo make install
 ```
 
@@ -60,13 +56,16 @@ make
 
 
 ### 将.cpp文件生成.so动态链接库
+
+- 创建CMakeLists.txt
+
 ```cpp
 创建项目目录
 mkdir get3dfixed
 创建CMakeLists.txt
 ```
 CMakeLists.txt 内容为
-```
+```cpp
 # CMake 的版本
 cmake_minimum_required(VERSION 2.8)
 
@@ -91,7 +90,15 @@ add_library(get3dfixeds1 SHARED get3DFixed.cpp)
 # 为get3dfixeds1 添加openv的动态链接库
 target_link_libraries(get3dfixeds1 ${OpenCV_LIBS})
 ```
-#### 安装依赖
+
+- 生成 .so文件
+```shell script
+mkdir build; cd build; cmake ..; make
+如果修改了cpp代码可以在build中重新生成.so
+cmake clean; cmake ..; make
+```
+
+### 安装依赖
 ```
 pip install -r requirements.txt
 ```
