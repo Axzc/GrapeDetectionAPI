@@ -32,6 +32,7 @@ def convert_to_cv2(abort, logger, image):
 
     starter = image.find(',')
     image_base64 = image[starter + 1:]
+    cv2_img = None
     try:
         bytes_buffer = BytesIO(base64.b64decode(image_base64))
         image = Image.open(bytes_buffer, mode='r')
