@@ -35,10 +35,10 @@ def convert_to_cv2(abort, logger, image):
     try:
         bytes_buffer = BytesIO(base64.b64decode(image_base64))
         image = Image.open(bytes_buffer, mode='r')
+        cv2_img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     except:
         logger.error("Conversion to cv2 failed, param not right")
         abort(400)
     # fileNPArray = np.fromstring(bytes_buffer.getvalue(), np.uint8)    u
     # cv2_img = cv2.imdecode(fileNPArray, cv2.IMREAD_COLOR)
-    cv2_img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     return cv2_img
