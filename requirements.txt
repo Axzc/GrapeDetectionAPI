@@ -31,6 +31,6 @@ tensorflow==1.15.0
 tensorflow-estimator==1.13.0
 termcolor==1.1.0
 Theano==1.0.4
-urllib3==1.25.3
+urllib3==1.25.8
 uWSGI==2.0.18
 Werkzeug==0.16.0
