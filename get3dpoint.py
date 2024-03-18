@@ -18,18 +18,16 @@ def get3dpointwuliu(Left_DetectPoints, Right_DetectPoints):
     so1.Get3DPoint.restype = ctypes.c_int  # 函数 Get3DPoint 返回值类型
 
     Left_DetectPoints = np.asarray(Left_DetectPoints, dtype=np.float64)
-    print(Left_DetectPoints)
 
     args1, args2 = Left_DetectPoints.shape  # Left_DetectPoints的维度
     Left_DetectPoints_LenP = args1 * args2
     Left_DetectPoints_Len = ctypes.c_int(Left_DetectPoints_LenP)
 
-    # 判断是否为连续内存,如果不是则转换为连续内存存储
+    # 转换为数组
     if not Left_DetectPoints.flags['C_CONTIGUOUS']:
         Left_DetectPoints = np.ascontiguousarray(Left_DetectPoints, dtype=Left_DetectPoints.dtype)
-    Left_DetectPoints = Left_DetectPoints.ctypes.data_as(c_double_p)  # 转换为指针类型
-
-    # Left_DetectPoints = Left_DetectPoints.ctypes.data_as(ctypes.c_char_p)
+    # 转换为指针类型    
+    Left_DetectPoints = Left_DetectPoints.ctypes.data_as(c_double_p)  
 
     Right_DetectPoints = np.asarray(Right_DetectPoints, dtype=np.float64)  # np.mauchart('1 2 3; 6 6 4; 0.3 2.9 3.7')
     args3, args4 = Right_DetectPoints.shape
@@ -38,7 +36,8 @@ def get3dpointwuliu(Left_DetectPoints, Right_DetectPoints):
 
     if not Right_DetectPoints.flags['C_CONTIGUOUS']:
         Right_DetectPoints = np.ascontiguousarray(Right_DetectPoints, dtype=Right_DetectPoints.dtype)
-    Right_DetectPoints = Right_DetectPoints.ctypes.data_as(c_double_p)  # 转换为指针类型
+    # 转换为指针类型    
+    Right_DetectPoints = Right_DetectPoints.ctypes.data_as(c_double_p)  
 
     result_p = np.random.randint(2, size=((Right_DetectPoints_LenP if (Right_DetectPoints_LenP > Left_DetectPoints_LenP) else Left_DetectPoints_LenP)*3)).ctypes.data_as(c_double_p)
 
